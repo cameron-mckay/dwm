@@ -1,9 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "st"
-#define TERMCLASS "St"
-#define BROWSER "firefox-developer-edition"
+#define TERMINAL "kitty"
+#define TERMCLASS "kitty"
+#define BROWSER "firefox"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -17,13 +17,15 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const char *lockcmd[] = { "slock", NULL }; /* Screen locking command */
-static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"  };
+static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:pixelsize=20:antialias=true:autohint=true"  };
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#770000";
-static char selbgcolor[]            = "#005577";
+// Window border color
+static char selbordercolor[]        = "#9d00ff";
+// Selction and title bar color
+static char selbgcolor[]            = "#30ab4f";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -191,6 +193,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
 	{ MODKEY,			XK_s,		togglesticky,	{0} },
+	{ MODKEY|ShiftMask,		XK_s,		spawn,		{.v = (const char*[]){ "spotify", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_d,		spawn,          {.v = (const char*[]){ "dmenu_run", NULL } } },
 	{ MODKEY|ShiftMask,		XK_d,		spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
